@@ -1,0 +1,166 @@
+.contact-form {
+    padding: 35px;
+    max-width: 100%;
+    background: var(--card-bg);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--glass-border);
+}
+
+.form-title {
+    margin-bottom: 28px;
+    font-size: 1.4rem;
+    text-align: center;
+    position: relative;
+    color: var(--primary-blue);
+}
+
+.form-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: var(--primary-gold);
+    border-radius: 2px;
+}
+
+.form-group {
+    margin-bottom: 22px;
+    position: relative;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 18px;
+    background: var(--grey-50);
+    border: 1px solid var(--grey-200);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-subtle);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-blue);
+    background: var(--light-bg);
+    box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.08);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 130px;
+}
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: 14px 28px;
+    font-size: 1rem;
+}
+
+/* Loading State */
+.submit-btn.loading {
+    pointer-events: none;
+    position: relative;
+}
+
+.submit-btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 2px solid transparent;
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@keyframes spin {
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+/* Success Message */
+.success-msg {
+    text-align: center;
+    color: #059669;
+    margin-top: 18px;
+    padding: 14px;
+    background: rgba(5, 150, 105, 0.08);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(5, 150, 105, 0.2);
+    animation: fadeInUp 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.success-msg::before {
+    content: '✓';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    background: #059669;
+    color: white;
+    border-radius: 50%;
+    font-size: 0.75rem;
+}
+
+/* Error State */
+.form-group.error input,
+.form-group.error textarea {
+    border-color: var(--primary-red);
+    background: rgba(220, 38, 38, 0.03);
+}
+
+.form-group .error-message {
+    color: var(--primary-red);
+    font-size: 0.75rem;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .contact-form {
+        padding: 28px 20px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 12px 14px;
+    }
+}
