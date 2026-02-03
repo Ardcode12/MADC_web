@@ -2,14 +2,15 @@ import React, { useEffect, useState, useRef } from 'react';
 import Hero from '../components/Hero';
 import ScrollFrames from '../components/ScrollFrames';
 import EventCard from '../components/EventCard';
-import TeamCard from '../components/TeamCard';
+// TeamCard imported but used differently in this design
 import ContactForm from '../components/ContactForm';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { FaRocket, FaLightbulb, FaUsers, FaMapMarkerAlt, FaEnvelope, FaPhone, FaInstagram, FaTwitter, FaLinkedin, FaGithub, FaGraduationCap, FaCode, FaTrophy, FaCalendarAlt, FaQuoteLeft } from 'react-icons/fa';
+import { FaRocket, FaLightbulb, FaUsers, FaMapMarkerAlt, FaEnvelope, FaPhone, FaInstagram, FaTwitter, FaLinkedin, FaGithub, FaGraduationCap, FaCode, FaTrophy, FaCalendarAlt } from 'react-icons/fa';
 import './Home.css';
 
 const Home = () => {
+    // eslint-disable-next-line no-unused-vars
     const [countersVisible, setCountersVisible] = useState(false);
     const [currentEventIndex, setCurrentEventIndex] = useState(0);
     const [selectedEvent, setSelectedEvent] = useState(null);
@@ -108,6 +109,7 @@ const Home = () => {
         return () => clearInterval(interval);
     }, [conductedEvents.length]);
 
+    // eslint-disable-next-line no-unused-vars
     const stats = [
         { value: 500, suffix: '+', label: 'Active Members', icon: <FaUsers /> },
         { value: 50, suffix: '+', label: 'Workshops', icon: <FaCode /> },
@@ -681,10 +683,10 @@ const Home = () => {
                             <div className="contact-socials" data-aos="fade-up" data-aos-delay="300">
                                 <h4>Follow Us</h4>
                                 <div className="social-icons-row">
-                                    <a href="#" className="social-icon-new"><FaInstagram /></a>
-                                    <a href="#" className="social-icon-new"><FaTwitter /></a>
-                                    <a href="#" className="social-icon-new"><FaLinkedin /></a>
-                                    <a href="#" className="social-icon-new"><FaGithub /></a>
+                                    <a href="https://instagram.com" target="_blank" rel="noreferrer" className="social-icon-new"><FaInstagram /></a>
+                                    <a href="https://twitter.com" target="_blank" rel="noreferrer" className="social-icon-new"><FaTwitter /></a>
+                                    <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="social-icon-new"><FaLinkedin /></a>
+                                    <a href="https://github.com" target="_blank" rel="noreferrer" className="social-icon-new"><FaGithub /></a>
                                 </div>
                             </div>
                         </div>
@@ -700,12 +702,13 @@ const Home = () => {
                 </div>
             </section>
 
-            
+
         </>
     );
 };
 
 // CountUp component
+// eslint-disable-next-line no-unused-vars
 const CountUp = ({ end, duration }) => {
     const [count, setCount] = useState(0);
 

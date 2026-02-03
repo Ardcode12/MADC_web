@@ -5,6 +5,7 @@ const ScrollFrames = () => {
     const containerRef = useRef(null);
     const [currentFrame, setCurrentFrame] = useState(1);
     const [textVisible, setTextVisible] = useState(false);
+    // eslint-disable-next-line no-unused-vars
     const [imagesLoaded, setImagesLoaded] = useState(false);
 
     // Total number of frames
