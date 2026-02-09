@@ -292,9 +292,9 @@ const Home = () => {
     ];
 
     const contactInfo = [
-        { icon: <FaMapMarkerAlt />, title: 'Address', content: ['Computer Science Block,', 'University College of Engineering'] },
-        { icon: <FaEnvelope />, title: 'Email', content: ['madc.club@university.edu'] },
-        { icon: <FaPhone />, title: 'Phone', content: ['+1 (555) 123-4567'] }
+        { icon: <FaMapMarkerAlt />, title: 'Address', content: ['IT Park', 'Kongu Engineering College ' ] },
+        { icon: <FaEnvelope />, title: 'Email', content: ['madc.club@kongu.edu'] },
+        { icon: <FaPhone />, title: 'Phone', content: ['9080176624'] }
     ];
 
     return (
