@@ -3,75 +3,64 @@ import './ScrollFrames.css';
 
 const ScrollFrames = () => {
     const containerRef = useRef(null);
-    const [currentFrame, setCurrentFrame] = useState(1);
+    const videoRef = useRef(null);
     const [textVisible, setTextVisible] = useState(false);
+    const [videoLoaded, setVideoLoaded] = useState(false);
     const rafRef = useRef(null);
-    const lastFrameRef = useRef(1);
 
-    const totalFrames = 240;
-
-    // Simple frame path generator
-    const getFramePath = useCallback((frameNum) => {
-        const num = Math.max(1, Math.min(totalFrames, frameNum));
-        return `/frames/ezgif-frame-${String(num).padStart(3, '0')}.jpg`;
+    // Handle video loaded
+    const handleVideoLoaded = useCallback(() => {
+        setVideoLoaded(true);
+        // Set initial frame
+        if (videoRef.current) {
+            videoRef.current.currentTime = 0;
+        }
     }, []);
 
-    // Preload critical frames on mount
-    useEffect(() => {
-        const criticalFrames = [1, 40, 80, 120, 160, 200, 240];
-        criticalFrames.forEach(num => {
-            const img = new Image();
-            img.src = getFramePath(num);
-        });
-    }, [getFramePath]);
-
-    // Main scroll handler
+    // Main scroll handler - scrub through video
     const handleScroll = useCallback(() => {
-        // Cancel any pending animation frame
         if (rafRef.current) {
             cancelAnimationFrame(rafRef.current);
         }
 
         rafRef.current = requestAnimationFrame(() => {
-            if (!containerRef.current) return;
+            if (!containerRef.current || !videoRef.current || !videoLoaded) return;
 
             const rect = containerRef.current.getBoundingClientRect();
             const containerHeight = containerRef.current.offsetHeight;
             const windowHeight = window.innerHeight;
             const scrollRange = containerHeight - windowHeight;
+            const videoDuration = videoRef.current.duration;
 
-            let frame = 1;
+            let progress = 0;
             let showText = false;
 
             if (rect.top >= 0) {
                 // Before the container
-                frame = 1;
+                progress = 0;
             } else if (rect.top <= -scrollRange) {
                 // Past the container
-                frame = totalFrames;
+                progress = 1;
                 showText = true;
             } else {
-                // Inside the container - calculate progress
+                // Inside the container
                 const scrolled = -rect.top;
-                const progress = scrolled / scrollRange;
-                const frameProgress = Math.min(progress / 0.85, 1);
-                frame = Math.floor(frameProgress * (totalFrames - 1)) + 1;
-                showText = progress > 0.8;
+                progress = scrolled / scrollRange;
+                showText = progress > 0.85;
             }
 
-            // Only update if frame actually changed
-            if (frame !== lastFrameRef.current) {
-                lastFrameRef.current = frame;
-                setCurrentFrame(frame);
-            }
+            // Set video time based on scroll progress
+            const targetTime = progress * videoDuration * 0.85; // Use 85% of video
+            videoRef.current.currentTime = Math.min(targetTime, videoDuration);
+
             setTextVisible(showText);
         });
-    }, []);
+    }, [videoLoaded]);
 
     // Set up scroll listener
     useEffect(() => {
         window.addEventListener('scroll', handleScroll, { passive: true });
-        handleScroll(); // Initial call
+        handleScroll();
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
@@ -84,14 +73,27 @@ const ScrollFrames = () => {
     return (
         <section className="scroll-frames-container" ref={containerRef}>
             <div className="scroll-frames-sticky">
+                {/* Loading indicator */}
+                {!videoLoaded && (
+                    <div className="scroll-loading">
+                        <div className="loading-spinner"></div>
+                    </div>
+                )}
+
+                {/* Video element for scrubbing */}
                 <div className="frame-image-container">
-                    <img
-                        src={getFramePath(currentFrame)}
-                        alt=""
-                        className="frame-image"
+                    <video
+                        ref={videoRef}
+                        className="frame-video"
+                        src="/scroll-animation.mp4"
+                        muted
+                        playsInline
+                        preload="auto"
+                        onLoadedData={handleVideoLoaded}
                     />
                 </div>
 
+                {/* Text Overlay */}
                 <div className={`text-overlay ${textVisible ? 'visible' : ''}`}>
                     <div className="text-slide-container">
                         <img src="/images/img.png" alt="MADC" className="scroll-logo" />
