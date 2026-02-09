@@ -190,13 +190,13 @@
     padding: 32px;
     position: relative;
     overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .bento-card:hover {
-    border-color: var(--glass-border-hover);
-    transform: translateY(-8px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    border-color: rgba(212, 160, 0, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25), 0 0 20px rgba(212, 160, 0, 0.08);
 }
 
 /* Card Sizes */
@@ -224,28 +224,17 @@
 
 .card-glow-effect {
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: conic-gradient(from 180deg, transparent, rgba(245, 212, 66, 0.08), transparent, rgba(96, 165, 250, 0.08), transparent);
-    animation: cardGlowRotate 10s linear infinite;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(245, 212, 66, 0.05) 0%, rgba(96, 165, 250, 0.05) 100%);
     opacity: 0;
-    transition: opacity 0.5s;
+    transition: opacity 0.3s ease;
 }
 
 .welcome-card:hover .card-glow-effect {
     opacity: 1;
-}
-
-@keyframes cardGlowRotate {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
 }
 
 .welcome-content {
@@ -436,7 +425,7 @@
 }
 
 .bento-card:hover .bento-icon {
-    transform: scale(1.1) rotate(5deg);
+    transform: scale(1.05);
 }
 
 .icon-particles {
@@ -594,14 +583,14 @@
     justify-content: center;
     font-size: 1.5rem;
     color: var(--primary-gold);
-    transition: all 0.4s;
+    transition: all 0.3s ease;
 }
 
 .value-card-bento:hover .value-icon-wrap {
-    background: var(--gradient-gold);
-    color: white;
-    transform: scale(1.1) rotate(10deg);
-    box-shadow: 0 10px 30px rgba(245, 212, 66, 0.3);
+    background: rgba(245, 212, 66, 0.2);
+    color: var(--primary-gold);
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(245, 212, 66, 0.15);
 }
 
 .value-card-bento h5 {
@@ -1158,7 +1147,7 @@
 }
 
 .mv-card:hover .mv-icon {
-    transform: translate(-50%, -50%) scale(1.1) rotate(5deg);
+    transform: translate(-50%, -50%) scale(1.05);
 }
 
 .mv-icon-orbit {
@@ -1312,8 +1301,8 @@
 .value-item-inline:hover .value-icon-box {
     background: var(--gradient-red);
     color: white;
-    transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(220, 38, 38, 0.25);
 }
 
 .value-item-inline h4 {
@@ -2411,8 +2400,9 @@
 
 /* Faculty Grid */
 .faculty-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 30px;
     max-width: 900px;
     margin: 0 auto;
@@ -2425,6 +2415,8 @@
     border: 1px solid var(--glass-border);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     text-align: center;
+    width: 280px;
+    flex-shrink: 0;
 }
 
 .faculty-card:hover {
@@ -2518,7 +2510,7 @@
 .bearers-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
+    gap: 30px;
     max-width: 1100px;
     margin: 0 auto;
 }
@@ -2533,14 +2525,14 @@
 }
 
 .bearer-card:hover {
-    transform: translateY(-8px) rotateX(5deg);
-    border-color: rgba(96, 165, 250, 0.4);
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(96, 165, 250, 0.1);
+    transform: translateY(-10px);
+    border-color: rgba(212, 160, 0, 0.4);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(212, 160, 0, 0.1);
 }
 
 .bearer-image-wrapper {
     position: relative;
-    height: 200px;
+    height: 220px;
     overflow: hidden;
 }
 
@@ -2552,23 +2544,45 @@
 }
 
 .bearer-card:hover .bearer-image-wrapper img {
-    transform: scale(1.08);
+    transform: scale(1.1);
 }
 
-.bearer-role-badge {
+.bearer-overlay {
     position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--gradient-gold);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.bearer-card:hover .bearer-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.bearer-social {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
-    padding: 8px 20px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.bearer-social:hover {
+    background: var(--primary-gold);
+    transform: scale(1.1);
 }
 
 .bearer-info {
@@ -2578,32 +2592,13 @@
 .bearer-info h4 {
     color: var(--text-primary);
     font-size: 1.1rem;
-    margin-bottom: 12px;
+    margin-bottom: 5px;
 }
 
-.bearer-socials {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-}
-
-.bearer-socials a {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-}
-
-.bearer-socials a:hover {
-    background: var(--primary-blue);
-    color: white;
-    transform: translateY(-3px);
+.bearer-role {
+    color: var(--primary-gold);
+    font-size: 0.85rem;
+    font-weight: 600;
 }
 
 /* Members Carousel */

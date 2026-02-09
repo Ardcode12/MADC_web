@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import './ScrollFrames.css';
 
 const ScrollFrames = () => {
@@ -7,6 +7,8 @@ const ScrollFrames = () => {
     const [textVisible, setTextVisible] = useState(false);
     // eslint-disable-next-line no-unused-vars
     const [imagesLoaded, setImagesLoaded] = useState(false);
+    const animationFrameRef = useRef(null);
+    const lastFrameRef = useRef(1);
 
     // Total number of frames
     const totalFrames = 240;
@@ -17,28 +19,39 @@ const ScrollFrames = () => {
         return `/frames/ezgif-frame-${paddedNum}.jpg`;
     };
 
-    // Preload images for smooth animation
+    // Preload key frames for performance
     useEffect(() => {
-        const preloadImages = async () => {
-            const imagePromises = [];
-            for (let i = 1; i <= totalFrames; i++) {
+        const preloadKeyFrames = async () => {
+            const keyFrames = [1, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, 240];
+            const imagePromises = keyFrames.map(i => {
                 const img = new Image();
                 img.src = getFramePath(i);
-                imagePromises.push(
-                    new Promise((resolve) => {
-                        img.onload = resolve;
-                        img.onerror = resolve;
-                    })
-                );
-            }
+                return new Promise((resolve) => {
+                    img.onload = resolve;
+                    img.onerror = resolve;
+                });
+            });
             await Promise.all(imagePromises);
             setImagesLoaded(true);
+
+            // Load remaining frames in background
+            for (let i = 1; i <= totalFrames; i++) {
+                if (!keyFrames.includes(i)) {
+                    const img = new Image();
+                    img.src = getFramePath(i);
+                }
+            }
         };
-        preloadImages();
+        preloadKeyFrames();
     }, []);
 
-    useEffect(() => {
-        const handleScroll = () => {
+    // Scroll handler using requestAnimationFrame
+    const handleScroll = useCallback(() => {
+        if (animationFrameRef.current) {
+            cancelAnimationFrame(animationFrameRef.current);
+        }
+
+        animationFrameRef.current = requestAnimationFrame(() => {
             if (!containerRef.current) return;
 
             const rect = containerRef.current.getBoundingClientRect();
@@ -49,29 +62,43 @@ const ScrollFrames = () => {
             const scrollStart = rect.top;
             const scrollRange = containerHeight - windowHeight;
 
+            let newFrame = 1;
+            let showText = false;
+
             if (scrollStart > 0) {
-                setCurrentFrame(1);
-                setTextVisible(false);
+                newFrame = 1;
+                showText = false;
             } else if (scrollStart <= -scrollRange) {
-                setCurrentFrame(totalFrames);
-                setTextVisible(true);
+                newFrame = totalFrames;
+                showText = true;
             } else {
                 const progress = Math.abs(scrollStart) / scrollRange;
                 // Use 85% of scroll for frames, last 15% for text
                 const frameProgress = Math.min(progress / 0.85, 1);
-                const frame = Math.max(1, Math.min(totalFrames, Math.floor(frameProgress * totalFrames) + 1));
-                setCurrentFrame(frame);
-
-                // Show text when we're past 80% scroll
-                setTextVisible(progress > 0.8);
+                newFrame = Math.max(1, Math.min(totalFrames, Math.floor(frameProgress * totalFrames) + 1));
+                showText = progress > 0.8;
             }
-        };
 
+            // Update frame
+            if (newFrame !== lastFrameRef.current) {
+                lastFrameRef.current = newFrame;
+                setCurrentFrame(newFrame);
+            }
+            setTextVisible(showText);
+        });
+    }, []);
+
+    useEffect(() => {
         window.addEventListener('scroll', handleScroll, { passive: true });
         handleScroll(); // Initial check
 
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            if (animationFrameRef.current) {
+                cancelAnimationFrame(animationFrameRef.current);
+            }
+        };
+    }, [handleScroll]);
 
     return (
         <section className="scroll-frames-container" ref={containerRef}>

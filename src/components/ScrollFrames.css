@@ -15,6 +15,8 @@
     justify-content: center;
     overflow: hidden;
     background: #0F172A;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
 /* Frame Image Container */
@@ -25,6 +27,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
 .frame-image {
@@ -32,7 +36,12 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
-    will-change: contents;
+    will-change: contents, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
 /* Text Overlay */

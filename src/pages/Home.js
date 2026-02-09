@@ -20,9 +20,13 @@ const Home = () => {
 
     useEffect(() => {
         AOS.init({
-            duration: 800,
+            duration: 600,
             once: true,
-            easing: 'ease-out-cubic'
+            easing: 'ease-out',
+            offset: 50,
+            disable: 'mobile', // Disable on mobile for better performance
+            throttleDelay: 99, // Reduce CPU usage
+            debounceDelay: 50
         });
 
         // Intersection Observer for stats counter
@@ -46,6 +50,30 @@ const Home = () => {
     const conductedEvents = [
         {
             id: 1,
+            title: "GEN-AI WORKSHOP",
+            date: "Dec 26, 2025",
+            location: "Kongu Engineering College",
+            description: "An Intra College Workshop fostering innovation, learning, and collaboration in Generative AI.",
+            fullDescription: "We are pleased to invite you to GenAI Workshop that fosters innovation, learning, and collaboration. Join us as we create a platform for students to showcase their skills and creativity. This workshop is part of MADATHON 2K25, organized by the Mobile Application Development Club.",
+            attendees: 0,
+            highlights: ["Generative AI Fundamentals", "Hands-on AI Projects", "Innovation & Collaboration"],
+            image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000",
+            isUpcoming: true
+        },
+        {
+            id: 2,
+            title: "MADATHON 2K25",
+            date: "Dec 26, 2025",
+            location: "Kongu Engineering College",
+            description: "Annual flagship event by Mobile Application Development Club featuring workshops and competitions.",
+            fullDescription: "MADATHON 2K25 is the flagship annual event of the Mobile Application Development Club at Kongu Engineering College. Join us for an exciting day of workshops, competitions, and networking with fellow developers and industry experts.",
+            attendees: 0,
+            highlights: ["App Development Contest", "Tech Workshops", "Industry Networking"],
+            image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=1000",
+            isUpcoming: true
+        },
+        {
+            id: 3,
             title: "App Dev Workshop 101",
             date: "Oct 15, 2024",
             location: "Lab 305, Tech Block",
@@ -56,7 +84,7 @@ const Home = () => {
             image: "https://images.unsplash.com/photo-1549692520-4f5144b6b158?auto=format&fit=crop&q=80&w=1000"
         },
         {
-            id: 2,
+            id: 4,
             title: "Hackathon 2024",
             date: "Nov 20-22, 2024",
             location: "Main Auditorium",
@@ -67,7 +95,7 @@ const Home = () => {
             image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1000"
         },
         {
-            id: 3,
+            id: 5,
             title: "Guest Lecture: UI/UX",
             date: "Dec 05, 2024",
             location: "Seminar Hall A",
@@ -78,7 +106,7 @@ const Home = () => {
             image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=1000"
         },
         {
-            id: 4,
+            id: 6,
             title: "Flutter Bootcamp",
             date: "Jan 10-12, 2025",
             location: "Computer Lab 2",
@@ -89,7 +117,7 @@ const Home = () => {
             image: "https://images.unsplash.com/photo-1551033406-611cf9a28f67?auto=format&fit=crop&q=80&w=1000"
         },
         {
-            id: 5,
+            id: 7,
             title: "Industry Connect",
             date: "Jan 25, 2025",
             location: "Conference Hall",
@@ -117,72 +145,133 @@ const Home = () => {
         { value: 15, suffix: '+', label: 'Industry Partners', icon: <FaTrophy /> }
     ];
 
-    // Faculty Coordinators
-    const facultyCoordinators = [
+    // Patrons
+    const patrons = [
         {
-            name: "Dr. Ramesh Kumar",
-            role: "Faculty Coordinator",
-            department: "Computer Science",
-            image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400",
-            linkedin: "#", email: "ramesh@university.edu"
+            name: "Thiru.E.R.K.Krishnan",
+            role: "Chief Patron",
+            designation: "Correspondent",
+            qualification: "M.Com",
+            image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400"
         },
         {
-            name: "Dr. Priya Sharma",
-            role: "Faculty Coordinator",
-            department: "Information Technology",
-            image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400",
-            linkedin: "#", email: "priya@university.edu"
+            name: "Dr.R.Parameshwaran",
+            role: "Patron",
+            designation: "Principal",
+            qualification: "M.E., Ph.D.",
+            image: "/images/imgi_4_Parameshwaran.jpg"
         },
         {
-            name: "Prof. Anil Verma",
-            role: "Faculty Advisor",
-            department: "Electronics",
-            image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400",
-            linkedin: "#", email: "anil@university.edu"
+            name: "Dr.S.Anandamurugan",
+            role: "President",
+            designation: "HOD / IT",
+            qualification: "M.E., Ph.D.",
+            image: "/images/imgi_5_anandamurugan.jpg"
+        }
+    ];
+
+    // Staff Coordinators
+    const staffCoordinators = [
+        {
+            name: "Mr.A.P.Ponselvakumar",
+            role: "Staff Coordinator",
+            department: "Assistant Professor (SLG)",
+            image: "/images/imgi_6_ponselvakumar.jpg",
+            linkedin: "#", email: "ponselvakumar@kec.edu"
+        },
+        {
+            name: "Mrs.P.Vanitha",
+            role: "Staff Coordinator",
+            department: "Assistant Professor, IT",
+            image: "/images/imgi_25_Ms.P.Vanitha.62230c2f9a73dd7eb411.jpg",
+            linkedin: "#", email: "vanitha@kec.edu"
         }
     ];
 
     // Office Bearers
     const officeBearers = [
         {
-            name: "Arun Prakash",
+            name: "Ms.M.Madhuvarshini",
             role: "Secretary",
-            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
-            linkedin: "#", github: "#", email: "arun@madc.club"
-        },
-        {
-            name: "Meera Nair",
-            role: "Joint Secretary",
+            department: "IV - CSE",
             image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400",
-            linkedin: "#", github: "#", email: "meera@madc.club"
+            linkedin: "#", github: "#", email: "madhuvarshini@madc.club"
         },
         {
-            name: "Karthik Rajan",
-            role: "Treasurer",
+            name: "Mr.S.Mukil",
+            role: "Joint Secretary",
+            department: "IV – IT",
+            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
+            linkedin: "#", github: "#", email: "mukil@madc.club"
+        },
+        {
+            name: "Mr.N.Harish Kannan",
+            role: "Joint Secretary",
+            department: "III - CSE",
             image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400",
-            linkedin: "#", github: "#", email: "karthik@madc.club"
+            linkedin: "#", github: "#", email: "harishkannan@madc.club"
         },
         {
-            name: "Lakshmi Priya",
-            role: "Joint Treasurer",
-            image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400",
-            linkedin: "#", github: "#", email: "lakshmi@madc.club"
+            name: "Mr.R.Naveenkumar",
+            role: "Treasurer",
+            department: "IV – IT",
+            image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400",
+            linkedin: "#", github: "#", email: "naveenkumar@madc.club"
         }
     ];
 
     // Team Members
 
-
-
+    // Executive Members
     const teamMembers = [
-        { name: "Rahul Menon", role: "Technical Lead", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
-        { name: "Sneha Das", role: "Design Lead", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
-        { name: "Vikram Singh", role: "Event Coordinator", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
-        { name: "Divya Lakshmi", role: "PR Head", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
-        { name: "Arjun Nair", role: "Web Developer", image: "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
-        { name: "Preethi Raj", role: "App Developer", image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
-        { name: "Suresh Kumar", role: "Content Writer", image: "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
-        { name: "Anjali Sharma", role: "Social Media", image: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" }
+        // Additional Secretaries
+        { name: "Ms.Harshitha Kannan", role: "Additional Secretary", department: "IV - CSE", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Mr.P.Yaswanth", role: "Additional Secretary", department: "IV - IT", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Ms.C.Subaharini", role: "Additional Secretary", department: "III - CSE", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        // Joint Treasurers
+        { name: "Ms.E.Swathi", role: "Joint Treasurer", department: "IV - CSE", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Mr.G.Soorya", role: "Joint Treasurer", department: "III - AIDS", image: "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        // Additional Treasurers
+        { name: "Mr.S.Mohaideen Abdul Kathar", role: "Additional Treasurer", department: "III - CSD", image: "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Ms.K.Eniya", role: "Additional Treasurer", department: "III - EIE", image: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Mr.B.Tawfeek", role: "Additional Treasurer", department: "III - AIDS", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        // Executive Members
+        { name: "Mr.V.Janarthikan", role: "Executive Member", department: "IV - CSE", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Mr.B.Aruna devi", role: "Executive Member", department: "IV - CSE", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Mr.V.Kishore", role: "Executive Member", department: "IV - CSE", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Mr.V.Naveenkumar", role: "Executive Member", department: "III - IT", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Mr.J.Boobalan", role: "Executive Member", department: "III - AIML", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Mr.V.Mahashwin", role: "Executive Member", department: "IV - CSE", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Mr.M.Jayaraj", role: "Executive Member", department: "III - CSE", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Ms.R.Sahana", role: "Executive Member", department: "III - CSD", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Mr.M.Aniruddha Pranav", role: "Executive Member", department: "III - EIE", image: "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Ms.R.Malini", role: "Executive Member", department: "III - IT", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Mr.P.Saravana", role: "Executive Member", department: "III - AIML", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Mr.R.Rithish", role: "Executive Member", department: "III - CSE", image: "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Ms.S.Charuleela", role: "Executive Member", department: "III - IT", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Mr.M.Kavin", role: "Executive Member", department: "III - EIE", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Ms.K.Rathidevi", role: "Executive Member", department: "III - CSE", image: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Mr.R.S.Navaneethan", role: "Executive Member", department: "II - IT", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Ms.P.TharaniPrakash", role: "Executive Member", department: "III - IT", image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Ms.S.Dharshini", role: "Executive Member", department: "III - CSE", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Mr.Lakshitha", role: "Executive Member", department: "II - IT", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Ms.P.Oviya", role: "Executive Member", department: "III - CSE", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Ms.M.Avantika", role: "Executive Member", department: "III - AI", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Mr.S.Bhavatharun", role: "Executive Member", department: "III - CSD", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Mr.V.Harish sri Ragunath", role: "Executive Member", department: "III - CSE", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Ms.A.V.Deepthi", role: "Executive Member", department: "III - EIE", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Mr.G.M.Arulventhan", role: "Executive Member", department: "III - EIE", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Ms.M.Kaarunya", role: "Executive Member", department: "CT/PG", image: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Ms.V.Kiruthiga", role: "Executive Member", department: "II - IT", image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Ms.D.Vaishnavi", role: "Executive Member", department: "II - CSE", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Mr.S.Mukesh Sai", role: "Executive Member", department: "II - IT", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Ms.S.V.Iniyasri", role: "Executive Member", department: "II - AI", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Mr.P.T.Kiruthik", role: "Executive Member", department: "III - AI", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Ms.N.S.Kuzhali", role: "Executive Member", department: "II – IT", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Mr.G.Niranjan", role: "Executive Member", department: "II – IT", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Ms.V.Nakshathra", role: "Executive Member", department: "II – IT", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Mr.K.Navin", role: "Executive Member", department: "II – IT", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" },
+        { name: "Mr.M.Navin", role: "Executive Member", department: "II – IT", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400", linkedin: "#", github: "#" }
     ];
 
     // Auto-scroll member carousel
@@ -194,12 +283,12 @@ const Home = () => {
     }, [teamMembers.length]);
 
     const galleryImages = [
-        { id: 1, src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600", title: "Team Collaboration" },
-        { id: 2, src: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=600", title: "Workshop Session" },
-        { id: 3, src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=600", title: "Hackathon Winners" },
-        { id: 4, src: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600", title: "Team Meeting" },
-        { id: 5, src: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=600", title: "Coding Session" },
-        { id: 6, src: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=600", title: "Tech Talk" }
+        { id: 1, src: "/images/galary/WhatsApp Image 2026-02-07 at 8.17.25 PM.jpeg", title: "MADC Event" },
+        { id: 2, src: "/images/galary/WhatsApp Image 2026-02-07 at 8.17.26 PM.jpeg", title: "Workshop Session" },
+        { id: 3, src: "/images/galary/WhatsApp Image 2026-02-07 at 8.17.27 PM.jpeg", title: "Team Activity" },
+        { id: 4, src: "/images/galary/WhatsApp Image 2026-02-07 at 8.18.07 PM.jpeg", title: "Club Gathering" },
+        { id: 5, src: "/images/galary/WhatsApp Image 2026-02-07 at 8.18.34 PM.jpeg", title: "Tech Event" },
+        { id: 6, src: "/images/galary/WhatsApp Image 2026-02-09 at 8.45.59 AM.jpeg", title: "Latest Moment" }
     ];
 
     const contactInfo = [
@@ -480,24 +569,43 @@ const Home = () => {
                         <h2 className="section-title">Our <span className="text-gold">Team</span></h2>
                         <p className="team-subtitle">The passionate individuals behind MADC's success</p>
                     </div>
-
-                    {/* Faculty Coordinators Row */}
-                    <div className="team-category" data-aos="fade-up" data-aos-delay="100">
-                        <h3 className="category-title"><span>Faculty Coordinators</span></h3>
+                    {/* Patrons Row */}
+                    <div className="team-category" data-aos="fade-up" data-aos-delay="50">
+                        <h3 className="category-title"><span>Patrons</span></h3>
                         <div className="faculty-grid">
-                            {facultyCoordinators.map((faculty, index) => (
+                            {patrons.map((patron, index) => (
                                 <div key={index} className="faculty-card" data-aos="zoom-in" data-aos-delay={index * 100}>
                                     <div className="faculty-image-wrapper">
-                                        <img src={faculty.image} alt={faculty.name} />
+                                        <img src={patron.image} alt={patron.name} />
+                                    </div>
+                                    <div className="faculty-info">
+                                        <h4>{patron.name}</h4>
+                                        <p className="faculty-role">{patron.role}</p>
+                                        <span className="faculty-dept">{patron.designation}</span>
+                                        <span className="faculty-dept" style={{ fontSize: '0.75rem', opacity: 0.8 }}>{patron.qualification}</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Staff Coordinators Row */}
+                    <div className="team-category" data-aos="fade-up" data-aos-delay="100">
+                        <h3 className="category-title"><span>Staff Coordinators</span></h3>
+                        <div className="faculty-grid">
+                            {staffCoordinators.map((coordinator, index) => (
+                                <div key={index} className="faculty-card" data-aos="zoom-in" data-aos-delay={index * 100}>
+                                    <div className="faculty-image-wrapper">
+                                        <img src={coordinator.image} alt={coordinator.name} />
                                         <div className="faculty-overlay">
-                                            <a href={faculty.linkedin} className="faculty-social"><FaLinkedin /></a>
-                                            <a href={`mailto:${faculty.email}`} className="faculty-social"><FaEnvelope /></a>
+                                            <a href={coordinator.linkedin} className="faculty-social"><FaLinkedin /></a>
+                                            <a href={`mailto:${coordinator.email}`} className="faculty-social"><FaEnvelope /></a>
                                         </div>
                                     </div>
                                     <div className="faculty-info">
-                                        <h4>{faculty.name}</h4>
-                                        <p className="faculty-role">{faculty.role}</p>
-                                        <span className="faculty-dept">{faculty.department}</span>
+                                        <h4>{coordinator.name}</h4>
+                                        <p className="faculty-role">{coordinator.role}</p>
+                                        <span className="faculty-dept">{coordinator.department}</span>
                                     </div>
                                 </div>
                             ))}
@@ -509,27 +617,28 @@ const Home = () => {
                         <h3 className="category-title"><span>Office Bearers</span></h3>
                         <div className="bearers-grid">
                             {officeBearers.map((bearer, index) => (
-                                <div key={index} className="bearer-card" data-aos="flip-up" data-aos-delay={index * 150}>
+                                <div key={index} className="bearer-card" data-aos="zoom-in" data-aos-delay={index * 50}>
                                     <div className="bearer-image-wrapper">
                                         <img src={bearer.image} alt={bearer.name} />
-                                        <div className="bearer-role-badge">{bearer.role}</div>
+                                        <div className="bearer-overlay">
+                                            <a href={bearer.linkedin} className="bearer-social"><FaLinkedin /></a>
+                                            <a href={bearer.github} className="bearer-social"><FaGithub /></a>
+                                            <a href={`mailto:${bearer.email}`} className="bearer-social"><FaEnvelope /></a>
+                                        </div>
                                     </div>
                                     <div className="bearer-info">
                                         <h4>{bearer.name}</h4>
-                                        <div className="bearer-socials">
-                                            <a href={bearer.linkedin}><FaLinkedin /></a>
-                                            <a href={bearer.github}><FaGithub /></a>
-                                            <a href={`mailto:${bearer.email}`}><FaEnvelope /></a>
-                                        </div>
+                                        <p className="bearer-role">{bearer.role}</p>
+                                        <span className="bearer-dept">{bearer.department}</span>
                                     </div>
                                 </div>
                             ))}
                         </div>
                     </div>
 
-                    {/* Team Members Carousel */}
+                    {/* Executive Members Carousel */}
                     <div className="team-category" data-aos="fade-up" data-aos-delay="300">
-                        <h3 className="category-title"><span>Other Members</span></h3>
+                        <h3 className="category-title"><span>Executive Members</span></h3>
                         <div className="members-carousel-advanced" ref={memberCarouselRef}>
                             <div className="members-track-advanced">
                                 {teamMembers.map((member, index) => {

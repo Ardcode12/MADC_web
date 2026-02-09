@@ -410,6 +410,148 @@
     }
 }
 
+/* ============ EVENT INVITATION BANNER ============ */
+.event-invitation-banner {
+    margin-top: 40px;
+    padding: 24px 32px;
+    background: linear-gradient(135deg,
+            rgba(220, 38, 38, 0.15) 0%,
+            rgba(30, 64, 175, 0.15) 50%,
+            rgba(220, 38, 38, 0.1) 100%);
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    max-width: 500px;
+    opacity: 0;
+    animation: slideUp 0.7s ease 0.9s forwards;
+}
+
+.invitation-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(220, 38, 38, 0.1) 0%, transparent 50%);
+    animation: invitationGlow 4s ease-in-out infinite;
+}
+
+@keyframes invitationGlow {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translate(10%, 10%);
+        opacity: 1;
+    }
+}
+
+.invitation-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.invitation-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px rgba(220, 38, 38, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(220, 38, 38, 0.7);
+    }
+}
+
+.invitation-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FFFFFF 0%, var(--gold-light) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 4px;
+}
+
+.invitation-subtitle {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.invitation-details {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.invitation-event {
+    padding: 6px 14px;
+    background: rgba(30, 64, 175, 0.3);
+    border: 1px solid rgba(30, 64, 175, 0.5);
+    border-radius: 8px;
+    color: #93C5FD;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.invitation-date {
+    padding: 6px 14px;
+    background: rgba(220, 38, 38, 0.2);
+    border: 1px solid rgba(220, 38, 38, 0.4);
+    border-radius: 8px;
+    color: #FCA5A5;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.invitation-text {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 16px;
+}
+
+.invitation-btn {
+    padding: 10px 24px;
+    font-size: 0.9rem;
+    background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.invitation-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+}
+
 /* ============ RESPONSIVE ============ */
 @media screen and (max-width: 960px) {
     .hero-content h1 {
@@ -420,6 +562,11 @@
     .shape-2 {
         width: 350px;
         height: 350px;
+    }
+
+    .event-invitation-banner {
+        max-width: 90%;
+        padding: 20px 24px;
     }
 }
 
@@ -450,5 +597,19 @@
 
     .scroll-indicator {
         bottom: 20px;
+    }
+
+    .event-invitation-banner {
+        padding: 16px 20px;
+        margin-top: 30px;
+    }
+
+    .invitation-title {
+        font-size: 1.25rem;
+    }
+
+    .invitation-details {
+        flex-direction: column;
+        gap: 10px;
     }
 }

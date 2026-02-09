@@ -45,8 +45,6 @@ const Hero = () => {
                     poster="/images/hero-poster.jpg"
                 >
                     <source src="/images/bg.mp4" type="video/mp4" />
-                    
-                   
                 </video>
                 <div className="hero-video-overlay"></div>
             </div>
@@ -81,7 +79,7 @@ const Hero = () => {
                     <span className="typing-cursor"></span>
                 </p>
                 <div className="hero-btns">
-                    
+
                     <button className="btn btn-outline btn-large" onClick={() => scrollToSection('about')}>
                         Learn More
                     </button>
@@ -89,7 +87,7 @@ const Hero = () => {
             </div>
 
             {/* Scroll Indicator */}
-            
+
         </div>
     );
 };
