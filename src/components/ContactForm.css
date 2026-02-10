@@ -164,3 +164,39 @@
         padding: 12px 14px;
     }
 }
+
+@media screen and (max-width: 480px) {
+    .contact-form {
+        padding: 22px 14px;
+        border-radius: var(--radius-lg);
+    }
+
+    .form-title {
+        font-size: 1.15rem;
+        margin-bottom: 22px;
+    }
+
+    .form-group {
+        margin-bottom: 16px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 11px 12px;
+        font-size: 0.9rem;
+    }
+
+    .form-group textarea {
+        min-height: 100px;
+    }
+
+    .submit-btn {
+        padding: 12px 22px;
+        font-size: 0.9rem;
+    }
+
+    .success-msg {
+        font-size: 0.8rem;
+        padding: 10px;
+    }
+}

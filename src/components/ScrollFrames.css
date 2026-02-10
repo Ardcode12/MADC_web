@@ -183,3 +183,29 @@
         height: 50px;
     }
 }
+
+@media screen and (max-width: 480px) {
+    .scroll-frames-container {
+        height: 350vh;
+    }
+
+    .text-overlay {
+        padding-left: 4%;
+        background: linear-gradient(90deg, rgba(15, 23, 42, 0.97) 0%, rgba(15, 23, 42, 0.8) 70%, transparent 100%);
+    }
+
+    .slide-text {
+        font-size: clamp(1.5rem, 10vw, 2.5rem);
+        line-height: 1;
+    }
+
+    .scroll-logo {
+        height: 38px;
+        margin-bottom: 12px;
+    }
+
+    .loading-spinner {
+        width: 35px;
+        height: 35px;
+    }
+}

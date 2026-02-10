@@ -168,3 +168,42 @@
         padding: 20px 16px;
     }
 }
+
+@media screen and (max-width: 480px) {
+    .team-img-wrapper {
+        height: 200px;
+    }
+
+    .team-info {
+        padding: 16px 12px;
+    }
+
+    .team-info h3 {
+        font-size: 1rem;
+    }
+
+    .team-info p {
+        font-size: 0.8rem;
+    }
+
+    .team-info .role-badge {
+        font-size: 0.7rem;
+        padding: 3px 10px;
+    }
+
+    .team-socials {
+        bottom: 0;
+        height: 46px;
+        gap: 14px;
+    }
+
+    .team-socials a {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+
+    .team-card:hover {
+        transform: translateY(-2px);
+    }
+}

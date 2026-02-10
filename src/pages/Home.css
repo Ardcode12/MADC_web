@@ -702,6 +702,126 @@
     }
 }
 
+@media screen and (max-width: 480px) {
+    .about-bento-section {
+        padding: 50px 0;
+    }
+
+    .about-bento-header {
+        margin-bottom: 35px;
+    }
+
+    .about-bento-header h2 {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+
+    .header-tag {
+        font-size: 0.65rem;
+        letter-spacing: 2px;
+        padding: 5px 14px;
+    }
+
+    .bento-card {
+        padding: 22px 16px;
+    }
+
+    .welcome-icon-container {
+        width: 80px;
+        height: 80px;
+    }
+
+    .welcome-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .welcome-text h3 {
+        font-size: 1.3rem;
+    }
+
+    .welcome-text p {
+        font-size: 0.9rem;
+    }
+
+    .tech-badges {
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .tech-badge {
+        padding: 7px 14px;
+        font-size: 0.8rem;
+    }
+
+    .mission-bento,
+    .vision-bento {
+        min-height: auto;
+    }
+
+    .bento-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 1.4rem;
+        margin-bottom: 14px;
+    }
+
+    .mission-bento h4,
+    .vision-bento h4 {
+        font-size: 1.15rem;
+    }
+
+    .mission-bento p,
+    .vision-bento p {
+        font-size: 0.9rem;
+    }
+
+    .card-number {
+        font-size: 3.5rem;
+    }
+
+    .skills-card h4 {
+        font-size: 1.1rem;
+    }
+
+    .value-card-bento {
+        padding: 22px 14px;
+    }
+
+    .value-icon-wrap {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .value-card-bento h5 {
+        font-size: 0.95rem;
+    }
+
+    .tech-marquee {
+        margin-top: 35px;
+        padding: 14px 0;
+    }
+
+    .marquee-track {
+        gap: 35px;
+    }
+
+    .marquee-track span {
+        font-size: 0.85rem;
+    }
+
+    .glow-orb.orb-1,
+    .glow-orb.orb-2 {
+        width: 250px;
+        height: 250px;
+    }
+
+    .glow-orb.orb-3 {
+        display: none;
+    }
+}
+
 /* Background Decorations */
 .about-bg-deco {
     position: absolute;
@@ -1814,21 +1934,158 @@
         grid-template-columns: 1fr;
     }
 
+    .about-hero-card {
+        padding: 28px 16px;
+        margin-bottom: 35px;
+    }
+
     .about-hero-card h3 {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
+    }
+
+    .about-hero-card p {
+        font-size: 0.9rem;
     }
 
     .section-title-fancy {
-        font-size: 2rem;
+        font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+
+    .section-badge {
+        font-size: 0.75rem;
+        padding: 6px 16px;
+        letter-spacing: 1.5px;
+    }
+
+    .intro-icon-box {
+        width: 65px;
+        height: 65px;
+    }
+
+    .intro-main-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        padding: 12px;
     }
 
     .tech-stack-row {
-        gap: 10px;
+        gap: 8px;
     }
 
     .tech-tag {
-        padding: 8px 16px;
+        padding: 7px 14px;
+        font-size: 0.75rem;
+    }
+
+    .mv-card {
+        padding: 28px 20px;
+    }
+
+    .mv-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .mv-card p {
+        font-size: 0.9rem;
+    }
+
+    .mv-icon-wrapper {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 18px;
+    }
+
+    .mv-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 1.4rem;
+    }
+
+    .value-item-inline {
+        padding: 20px 14px;
+    }
+
+    .value-icon-box {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .value-item-inline h4 {
+        font-size: 0.95rem;
+    }
+
+    .value-item-inline p {
         font-size: 0.8rem;
+    }
+
+    .stats-section {
+        padding: 50px 0;
+    }
+
+    .stats-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .stat-item {
+        padding: 18px 10px;
+    }
+
+    .stat-icon {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .stat-value {
+        font-size: 1.75rem;
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+    }
+
+    .team-grid {
+        max-width: 280px;
+    }
+
+    .contact-grid {
+        gap: 20px;
+    }
+
+    .contact-info-card {
+        padding: 28px 20px;
+    }
+
+    .contact-info-card h3 {
+        font-size: 1.15rem;
+    }
+
+    .info-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 0.95rem;
+    }
+
+    .social-link {
+        width: 36px;
+        height: 36px;
+        font-size: 0.95rem;
+    }
+
+    .cta-panel {
+        padding: 35px 18px;
+        border-radius: var(--radius-lg);
+    }
+
+    .cta-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .cta-content p {
+        font-size: 0.95rem;
+        margin-bottom: 22px;
     }
 }
 
@@ -2283,16 +2540,48 @@
 }
 
 @media screen and (max-width: 480px) {
+    .events-section {
+        padding: 60px 0;
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+    }
+
     .carousel-card-3d {
-        width: 260px;
+        width: 240px;
     }
 
     .carousel-wrapper {
-        height: 360px;
+        height: 340px;
     }
 
     .events-carousel-3d {
-        padding: 20px 0 60px;
+        padding: 15px 0 50px;
+    }
+
+    .carousel-btn-3d {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .carousel-prev-3d {
+        left: 2px;
+    }
+
+    .carousel-next-3d {
+        right: 2px;
+    }
+
+    .indicator-3d {
+        width: 22px;
+        height: 4px;
+    }
+
+    .indicator-3d.active {
+        width: 35px;
     }
 }
 
@@ -3031,6 +3320,68 @@
         grid-template-columns: repeat(2, 1fr);
         max-width: 600px;
     }
+
+    .members-carousel-advanced {
+        margin: 0 50px;
+    }
+
+    .member-prev-advanced {
+        left: -50px;
+    }
+
+    .member-next-advanced {
+        right: -50px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .team-section-new {
+        padding: 70px 0;
+    }
+
+    .team-header {
+        margin-bottom: 40px;
+    }
+
+    .team-category {
+        margin-bottom: 40px;
+    }
+
+    .category-title {
+        font-size: 1.15rem;
+        margin-bottom: 25px;
+    }
+
+    .faculty-card {
+        width: 100%;
+    }
+
+    .members-carousel-advanced {
+        height: 280px;
+        margin: 0 40px;
+    }
+
+    .member-card-advanced {
+        width: 210px;
+    }
+
+    .member-image-advanced {
+        height: 160px;
+    }
+
+    .member-nav-advanced {
+        width: 42px;
+        height: 42px;
+        font-size: 1.4rem;
+    }
+
+    .member-prev-advanced {
+        left: -42px;
+    }
+
+    .member-next-advanced {
+        right: -42px;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -3053,6 +3404,127 @@
         width: 35px;
         height: 35px;
         font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .team-section-new {
+        padding: 50px 0;
+    }
+
+    .team-badge {
+        font-size: 0.7rem;
+        padding: 6px 14px;
+        letter-spacing: 1.5px;
+    }
+
+    .team-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .category-title {
+        font-size: 1rem;
+    }
+
+    .category-title span {
+        padding: 0 15px;
+    }
+
+    .faculty-card {
+        width: 100%;
+    }
+
+    .faculty-image-wrapper {
+        height: 180px;
+    }
+
+    .faculty-info {
+        padding: 14px;
+    }
+
+    .faculty-info h4 {
+        font-size: 0.95rem;
+    }
+
+    .faculty-role {
+        font-size: 0.75rem;
+    }
+
+    .faculty-dept {
+        font-size: 0.7rem;
+    }
+
+    .bearers-grid {
+        gap: 18px;
+        max-width: 280px;
+    }
+
+    .bearer-image-wrapper {
+        height: 180px;
+    }
+
+    .bearer-info {
+        padding: 14px;
+    }
+
+    .bearer-info h4 {
+        font-size: 0.95rem;
+    }
+
+    .bearer-role {
+        font-size: 0.75rem;
+    }
+
+    .members-carousel-advanced {
+        height: 260px;
+        margin: 0 30px;
+    }
+
+    .member-card-advanced {
+        width: 190px;
+    }
+
+    .member-image-advanced {
+        height: 140px;
+    }
+
+    .member-info-advanced {
+        padding: 12px;
+    }
+
+    .member-info-advanced h4 {
+        font-size: 0.9rem;
+    }
+
+    .member-info-advanced p {
+        font-size: 0.75rem;
+    }
+
+    .member-nav-advanced {
+        width: 36px;
+        height: 36px;
+        font-size: 1.2rem;
+    }
+
+    .member-prev-advanced {
+        left: -32px;
+    }
+
+    .member-next-advanced {
+        right: -32px;
+    }
+
+    .members-progress {
+        margin-top: 22px;
+        gap: 10px;
+    }
+
+    .progress-track {
+        width: 140px;
+    }
+
+    .progress-text {
+        font-size: 0.75rem;
     }
 }
 
@@ -4001,5 +4473,149 @@
 
     .social-icons-row {
         justify-content: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .contact-section-new {
+        padding: 50px 0;
+    }
+
+    .contact-header {
+        margin-bottom: 35px;
+    }
+
+    .contact-badge {
+        font-size: 0.7rem;
+        padding: 6px 14px;
+        letter-spacing: 1.5px;
+    }
+
+    .contact-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .contact-grid-new {
+        gap: 25px;
+    }
+
+    .contact-card {
+        padding: 18px;
+        gap: 14px;
+    }
+
+    .contact-card-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+        border-radius: 12px;
+    }
+
+    .contact-card-content h4 {
+        font-size: 0.95rem;
+    }
+
+    .contact-card-content p {
+        font-size: 0.85rem;
+    }
+
+    .contact-socials {
+        padding: 18px;
+        margin-top: 20px;
+    }
+
+    .contact-socials h4 {
+        font-size: 0.9rem;
+    }
+
+    .social-icons-row {
+        gap: 10px;
+    }
+
+    .social-icon-new {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+
+    .contact-form-card {
+        padding: 25px 18px;
+    }
+
+    .contact-form-card h3 {
+        font-size: 1.15rem;
+    }
+
+    /* Gallery Showcase mobile */
+    .gallery-showcase {
+        padding: 50px 0 40px;
+    }
+
+    .gallery-scroll-item {
+        width: 220px;
+        height: 140px;
+    }
+
+    .gallery-scroll-container::before,
+    .gallery-scroll-container::after {
+        width: 30px;
+    }
+
+    .gallery-featured-grid {
+        gap: 15px;
+    }
+
+    .featured-main {
+        height: 250px;
+    }
+
+    .featured-content {
+        padding: 18px;
+    }
+
+    .featured-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .featured-side {
+        gap: 12px;
+    }
+
+    .featured-item {
+        height: 150px;
+    }
+
+    .btn-gallery {
+        padding: 12px 30px;
+        font-size: 0.9rem;
+    }
+
+    /* Gallery section mobile */
+    .gallery-section-new {
+        padding: 50px 0;
+    }
+
+    .gallery-masonry {
+        grid-auto-rows: 180px;
+        gap: 12px;
+    }
+
+    .gallery-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+    }
+
+    .gallery-item-title {
+        font-size: 0.9rem;
+    }
+
+    .gallery-item-subtitle {
+        font-size: 0.7rem;
+    }
+
+    .overlay-border {
+        inset: 8px;
     }
 }

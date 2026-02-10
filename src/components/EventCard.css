@@ -164,3 +164,42 @@
         font-size: 1.1rem;
     }
 }
+
+@media screen and (max-width: 480px) {
+    .event-image {
+        height: 150px;
+    }
+
+    .event-content {
+        padding: 14px;
+    }
+
+    .event-title {
+        font-size: 1rem;
+    }
+
+    .event-date {
+        font-size: 0.75rem;
+    }
+
+    .event-description {
+        font-size: 0.8rem;
+        margin-bottom: 14px;
+    }
+
+    .event-badge {
+        font-size: 0.65rem;
+        padding: 4px 10px;
+        top: 10px;
+        right: 10px;
+    }
+
+    .btn-sm {
+        padding: 10px 0;
+        font-size: 0.8rem;
+    }
+
+    .event-card:hover {
+        transform: translateY(-2px);
+    }
+}

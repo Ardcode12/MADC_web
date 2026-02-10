@@ -579,6 +579,10 @@
         font-size: 2.5rem;
     }
 
+    .hero-content {
+        padding: 0 16px;
+    }
+
     .hero-subtitle {
         font-size: 1.1rem;
     }
@@ -611,5 +615,111 @@
     .invitation-details {
         flex-direction: column;
         gap: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero-container {
+        min-height: 100svh;
+    }
+
+    .hero-logo {
+        height: 65px;
+        margin-bottom: 18px;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(1.75rem, 7vw, 2.25rem);
+        margin-bottom: 14px;
+    }
+
+    .hero-content {
+        padding: 0 12px;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+    }
+
+    .hero-tagline {
+        font-size: 0.85rem;
+        margin-bottom: 28px;
+        gap: 6px;
+    }
+
+    .hero-btns {
+        max-width: 240px;
+        gap: 12px;
+    }
+
+    .btn-large {
+        padding: 12px 22px;
+        font-size: 0.9rem;
+    }
+
+    .scroll-indicator {
+        bottom: 12px;
+    }
+
+    .scroll-indicator span {
+        font-size: 0.6rem;
+        letter-spacing: 1.5px;
+    }
+
+    .scroll-mouse {
+        width: 18px;
+        height: 30px;
+    }
+
+    .event-invitation-banner {
+        padding: 14px 16px;
+        margin-top: 20px;
+        max-width: 95%;
+        border-radius: 14px;
+    }
+
+    .invitation-badge {
+        font-size: 0.65rem;
+        padding: 4px 12px;
+    }
+
+    .invitation-title {
+        font-size: 1.1rem;
+    }
+
+    .invitation-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .invitation-event,
+    .invitation-date {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+    }
+
+    .invitation-text {
+        font-size: 0.8rem;
+    }
+
+    .invitation-btn {
+        padding: 8px 20px;
+        font-size: 0.8rem;
+    }
+
+    .shape-1,
+    .shape-2 {
+        width: 250px;
+        height: 250px;
+    }
+
+    .shape-3,
+    .shape-4 {
+        display: none;
+    }
+
+    .particle {
+        width: 3px;
+        height: 3px;
     }
 }
